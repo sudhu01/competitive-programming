@@ -12,7 +12,7 @@ int main(){
 
     for(int i = 0; i < n; i++){
       if(b & (1 << i)) subset.push_back(i);
-    }x
+    }
 
     subsets.push_back(subset);
   }
