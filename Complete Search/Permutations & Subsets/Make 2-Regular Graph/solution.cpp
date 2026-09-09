@@ -5,15 +5,12 @@ int main() {
 	int n, m;
 	cin >> n >> m;
 	
-	vector<int> edges(n, 0);
+	vector<vector<int>> edges(n);
 	int ind, target;
 	for(int i = 0; i < m; i++){
         cin >> ind >> target;
-        if(edges[ind - 1] == 0){
-            edges[ind - 1] = target;
-        }else if(edges[target - 1] == 0){
-            edges[target - 1] = ind;
-        }
+        edges[ind - 1].push_back(target);
+        edges[target - 1].push_back(ind);
 	}
 	
 	vector<vector<int>> permutations;
@@ -50,7 +47,8 @@ int main() {
 	for(int i = 0; i < permutations.size(); i++){
 	    common = 0;
 	    for(int j = 0; j < n; j++){
-	        if(permutations[i][j] == edges[j]){
+	        auto it = find(edges[j].begin(), edges[j].end(), permutations[i][j]);
+	        if(it != edges[j].end()){
 	            common += 1;
 	        }
 	    }
