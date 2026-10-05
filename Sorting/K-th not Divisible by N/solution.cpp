@@ -5,7 +5,7 @@ int main() {
 	ios::sync_with_stdio(0);
 	cin.tie(0);
 	
-	int n, k;
+	long long n, k;
 	cin >> n >> k;
 	
 	cout << k + floor((k - 1)/(n - 1));
